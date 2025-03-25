@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição para Desfile - G.R.E.S. Acadêmicos de Santa Cruz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'samba-green': {
+                            500: '#00A859',
+                            600: '#008C4B',
+                            700: '#007540'
+                        }
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+    </script>
+    <style>
+        /* Custom animations */
+        @keyframes confetti {
+            0% { transform: translateY(0) rotate(0); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            background: #00A859;
+            top: -10px;
+            opacity: 0;
+        }
+        
+        .confetti-container.animate .confetti-piece {
+            animation: confetti 3s ease-in-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-white min-h-screen">
+    <div id="confetti-container" class="confetti-container fixed w-full h-0 top-0 left-0 overflow-visible z-50 pointer-events-none"></div>
+    
+    <div class="container mx-auto px-4 py-10 max-w-3xl">
+        <header class="text-center mb-10">
+            <div class="flex justify-center mb-4">
+                <div class="w-32 h-32 flex items-center justify-center">
+                    <!-- Logo oficial da escola de samba -->
+                    <img src="https://pfst.cf2.poecdn.net/base/image/66fec09abf7c5358d1d42d1a348908d1478a07aee1ff61b1e6add4cec9f453c3?w=1080&h=1080" alt="G.R.E.S. Acadêmicos de Santa Cruz" class="w-full h-full object-contain">
+                </div>
+            </div>
+            <h1 class="text-4xl font-bold text-samba-green-500 mb-2">Venha Desfilar Conosco!</h1>
+            <p class="text-lg dark:text-gray-300">Inscrição para o Desfile do G.R.E.S. Acadêmicos de Santa Cruz</p>
+        </header>
+        
+        <main>
+            <form id="sambaForm" class="bg-white dark:bg-gray-800 shadow-xl rounded-lg p-6 md:p-8 mb-10 border border-gray-200 dark:border-gray-700">
+                <div class="mb-6 border-b border-gray-200 dark:border-gray-700 pb-4">
+                    <h2 class="text-2xl font-semibold text-samba-green-500 mb-2">Informações Pessoais</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">Todos os campos marcados com * são obrigatórios</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Nome Completo -->
+                    <div class="col-span-full">
+                        <label for="nome" class="block text-gray-700 dark:text-gray-300 font-medium mb-1">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
+                            bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 
+                            focus:outline-none focus:ring-2 focus:ring-samba-green-500 text-base" 
+                            placeholder="Seu nome completo">
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="col-span-full md:col-span-1">
+                        <label for="email" class="block text-gray-700 dark:text-gray-300 font-medium mb-1">Email *</label>
+                        <input type="email" id="email" name="email" required 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
+                            bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 
+                            focus:outline-none focus:ring-2 focus:ring-samba-green-500 text-base" 
+                            placeholder="seu.email@exemplo.com">
+                    </div>
+                    
+                    <!-- Telefone -->
+                    <div class="col-span-full md:col-span-1">
+                        <label for="telefone" class="block text-gray-700 dark:text-gray-300 font-medium mb-1">Telefone *</label>
+                        <input type="tel" id="telefone" name="telefone" required 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
+                            bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 
+                            focus:outline-none focus:ring-2 focus:ring-samba-green-500 text-base" 
+                            placeholder="(XX) XXXXX-XXXX">
+                    </div>
+                    
+                    <!-- Data de Nascimento -->
+                    <div class="col-span-full md:col-span-1">
+                        <label for="dataNascimento" class="block text-gray-700 dark:text-gray-300 font-medium mb-1">Data de Nascimento *</label>
+                        <input type="date" id="dataNascimento" name="dataNascimento" required 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
+                            bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 
+                            focus:outline-none focus:ring-2 focus:ring-samba-green-500 text-base">
+                    </div>
+                    
+                    <!-- CPF -->
+                    <div class="col-span-full md:col-span-1">
+                        <label for="documento" class="block text-gray-700 dark:text-gray-300 font-medium mb-1">CPF *</label>
+                        <input type="text" id="documento" name="documento" required 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
+                            bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 
+                            focus:outline-none focus:ring-2 focus:ring-samba-green-500 text-base" 
+                            placeholder="Número do documento">
+                    </div>
+                </div>
+                
+                <div class="mt-8 mb-6 border-b border-gray-200 dark:border-gray-700 pb-4">
+                    <h2 class="text-2xl font-semibold text-samba-green-500 mb-2">Informações para o Desfile</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Experiência com Samba -->
+                    <div class="col-span-full">
+                        <label for="experiencia" class="block text-gray-700 dark:text-gray-300 font-medium mb-1">Experiência com Samba *</label>
+                        <select id="experiencia" name="experiencia" required 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
+                            bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 
+                            focus:outline-none focus:ring-2 focus:ring-samba-green-500 text-base">
+                            <option value="" disabled selected>Selecione sua experiência</option>
+                            <option value="iniciante">Iniciante - Primeira vez no desfile</option>
+                            <option value="intermediario">Intermediário - Já desfilei algumas vezes</option>
+                            <option value="experiente">Experiente - Desfilei por muitos anos</option>
+                            <option value="profissional">Profissional - Sou passista ou tenho formação</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Ala de Interesse -->
+                    <div class="col-span-full">
+                        <label for="ala" class="block text-gray-700 dark:text-gray-300 font-medium mb-1">Ala de Interesse *</label>
+                        <select id="ala" name="ala" required 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
+                            bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 
+                            focus:outline-none focus:ring-2 focus:ring-samba-green-500 text-base">
+                            <option value="" disabled selected>Selecione a ala desejada</option>
+                            <option value="bateria">Bateria</option>
+                            <option value="passistas">Passistas</option>
+                            <option value="baiana">Ala das Baianas</option>
+                            <option value="comunidade">Ala da Comunidade</option>
+                            <option value="compositores">Compositores</option>
+                            <option value="velha_guarda">Velha Guarda</option>
+                            <option value="comissao_frente">Comissão de Frente</option>
+                            <option value="carro_alegorico">Carro Alegórico</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Outra Ala (condicional) -->
+                    <div id="outraAlaContainer" class="col-span-full hidden">
+                        <label for="outraAla" class="block text-gray-700 dark:text-gray-300 font-medium mb-1">Especifique a Ala *</label>
+                        <input type="text" id="outraAla" name="outraAla" 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
+                            bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 
+                            focus:outline-none focus:ring-2 focus:ring-samba-green-500 text-base" 
+                            placeholder="Nome da ala de interesse">
+                    </div>
+                    
+                    <!-- Tamanho de camisa -->
+                    <div class="col-span-full md:col-span-1">
+                        <label for="camisa" class="block text-gray-700 dark:text-gray-300 font-medium mb-1">Tamanho de Camisa *</label>
+                        <select id="camisa" name="camisa" required 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
+                            bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 
+                            focus:outline-none focus:ring-2 focus:ring-samba-green-500 text-base">
+                            <option value="" disabled selected>Selecione o tamanho</option>
+                            <option value="PP">PP</option>
+                            <option value="P">P</option>
+                            <option value="M">M</option>
+                            <option value="G">G</option>
+                            <option value="GG">GG</option>
+                            <option value="XGG">XGG</option>
+                        </select>
+                    </div>
+                    <!-- Tamanho de Sapato -->
+                    <div class="col-span-full md:col-span-1">
+                        <label for="camisa" class="block text-gray-700 dark:text-gray-300 font-medium mb-1">Tamanho de Sapato *</label>
+                        <select id="camisa" name="camisa" required 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
+                            bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 
+                            focus:outline-none focus:ring-2 focus:ring-samba-green-500 text-base">
+                            <option value="" disabled selected>Selecione o tamanho</option>
+                            <option value="34">34</option>
+                            <option value="35">35</option>
+                            <option value="36">36</option>
+                            <option value="37">37</option>
+                            <option value="38">38</option>
+                            <option value="39">39</option>
+                            <option value="40">40</option>
+                            <option value="41">41</option>
+                            <option value="42">42</option>
+                            <option value="43">43</option>
+                            <option value="44">44</option>
+                            <option value="45">45</option>
+                            <option value="46">46</option>
+                            <option value="48">48</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Habilidades Especiais -->
+                    <div class="col-span-full">
+                        <label for="habilidades" class="block text-gray-700 dark:text-gray-300 font-medium mb-1">Habilidades Especiais</label>
+                        <textarea id="habilidades" name="habilidades" rows="3" 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
+                            bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 
+                            focus:outline-none focus:ring-2 focus:ring-samba-green-500 text-base" 
+                            placeholder="Descreva suas habilidades (dança, percussão, costura, etc)"></textarea>
+                    </div>
+                    
+                    <!-- Observações -->
+                    <div class="col-span-full">
+                        <label for="observacoes" class="block text-gray-700 dark:text-gray-300 font-medium mb-1">Observações Adicionais</label>
+                        <textarea id="observacoes" name="observacoes" rows="3" 
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 
+                            bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 
+                            focus:outline-none focus:ring-2 focus:ring-samba-green-500 text-base" 
+                            placeholder="Informações adicionais relevantes"></textarea>
+                    </div>
+                    
+                    <!-- Termo de Compromisso -->
+                </div>
+                
+                <div class="mt-8 mb-6 border-b border-gray-200 dark:border-gray-700 pb-4">
+                    <h2 class="text-2xl font-semibold text-samba-green-500 mb-2">Escolha sua Ala</h2>
+
+                    <div class="grid grid-cols-4 gap-2">
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://placehold.co/200x200" alt="Placeholder">
+                            <div class="flex gap-2 justify-center">
+                                <input type="radio" name="" id="">
+                                <p>Nome da Ala</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-span-full mt-4">
+                    <label class="flex items-start">
+                        <input type="checkbox" id="compromisso" name="compromisso" required class="mt-1 h-5 w-5 rounded text-samba-green-500 focus:ring-samba-green-500">
+                        <span class="ml-2 text-gray-700 dark:text-gray-300 text-sm">
+                            Comprometo-me a participar dos ensaios e seguir as regras e orientações da escola de samba, estando ciente das responsabilidades envolvidas no desfile. *
+                        </span>
+                    </label>
+                </div>
+                
+                <div class="mt-8">
+                    <button type="submit" disabled
+                        class="w-full bg-samba-green-500 hover:bg-samba-green-600 active:bg-samba-green-700 
+                        text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 
+                        focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-samba-green-500">
+                        Enviar Inscrição
+                    </button>
+                </div>
+            </form>
+            
+            <div id="confirmacaoInscricao" class="hidden bg-white dark:bg-gray-800 shadow-xl rounded-lg p-6 md:p-8 text-center animate-fadeIn">
+                <div class="w-20 h-20 mx-auto bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-samba-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold text-samba-green-500 mb-4">Inscrição Enviada com Sucesso!</h2>
+                <p class="text-gray-700 dark:text-gray-300 mb-6">
+                    Agradecemos seu interesse em desfilar conosco! 
+                    Entraremos em contato através do email ou telefone fornecido para confirmar sua participação e informar sobre os próximos passos.
+                </p>
+                <div class="mt-6">
+                    <button id="btnNovaInscricao" 
+                        class="bg-samba-green-500 hover:bg-samba-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                        Fazer Nova Inscrição
+                    </button>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
+            <p>© 2023 G.R.E.S. Acadêmicos de Santa Cruz. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>
