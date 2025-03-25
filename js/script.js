@@ -28,19 +28,23 @@ function formatarTelefone(input) {
 function formatarDocumento(input) {
   let value = input.value.replace(/\D/g, '');
   
-  if (value.length <= 9) {
-    // Formato RG
-    if (value.length > 8) {
-        value = value.replace(/^(\d{2})(\d{3})(\d{3})(\d{1}).*/, '$1.$2.$3-$4');
-    } else if (value.length > 5) {
-        value = value.replace(/^(\d{2})(\d{3})(\d{1,3}).*/, '$1.$2.$3');
-    } else if (value.length > 2) {
-        value = value.replace(/^(\d{2})(\d{1,3}).*/, '$1.$2');
-      }
-  } else {
-    // Formato CPF
+  if (value.length <= 11) {
     value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{2}).*/, '$1.$2.$3-$4');
   }
+  
+  // if (value.length <= 9) {
+  //   // Formato RG
+  //   if (value.length > 8) {
+  //     value = value.replace(/^(\d{2})(\d{3})(\d{3})(\d{1}).*/, '$1.$2.$3-$4');
+  //   } else if (value.length > 5) {
+  //     value = value.replace(/^(\d{2})(\d{3})(\d{1,3}).*/, '$1.$2.$3');
+  //   } else if (value.length > 2) {
+  //     value = value.replace(/^(\d{2})(\d{1,3}).*/, '$1.$2');
+  //   }
+  // } else {
+  //   // Formato CPF
+  //   value = value.replace(/^(\d{3})(\d{3})(\d{3})(\d{2}).*/, '$1.$2.$3-$4');
+  // }
   
   input.value = value;
 }
